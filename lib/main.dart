@@ -3,8 +3,15 @@ import 'package:tibetan_script/characters/character_screen.dart'
     as character_screen;
 import 'package:tibetan_script/vowels/vowel_screen.dart' as vowel_screen;
 import 'package:tibetan_script/numbers/number_screen.dart' as number_screen;
+import 'package:flutter/services.dart';
 
 void main() {
+  // set system chrome to white
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Color.fromARGB(255, 100, 8, 8),
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -16,8 +23,6 @@ class MyApp extends StatelessWidget {
     return const CupertinoApp(
       title: 'Tibetan Script',
       // used for the back button in the navigation bar
-      theme:
-          CupertinoThemeData(primaryColor: Color.fromARGB(255, 255, 255, 255)),
       home: MainScreen(),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:tibetan_script/models/vowel/vowel.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 
 class VowelDetailScreen extends StatefulWidget {
   const VowelDetailScreen({super.key, required this.vowel});
@@ -23,6 +24,14 @@ class _VowelDetailScreenState extends State<VowelDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+// set status bar color
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
+
     return SafeArea(
       child: CupertinoPageScaffold(
         child: Center(
@@ -32,9 +41,7 @@ class _VowelDetailScreenState extends State<VowelDetailScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  _isTibetan
-                      ? widget.vowel.tibetan
-                      : widget.vowel.ipa,
+                  _isTibetan ? widget.vowel.tibetan : widget.vowel.ipa,
                   style: TextStyle(
                     fontSize: _isTibetan ? 140 : 80,
                     fontWeight: FontWeight.bold,
