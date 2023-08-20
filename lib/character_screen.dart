@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tibetan_script/models/character.dart';
 import 'package:tibetan_script/models/character_service.dart';
 import 'package:tibetan_script/character_detail_screen.dart';
+import 'package:flutter/services.dart';
 
 class CharacterScreen extends StatelessWidget {
   const CharacterScreen({super.key});
@@ -64,6 +65,7 @@ class CharacterScreen extends StatelessWidget {
                             final character = characters[index];
                             return GestureDetector(
                               onTap: () {
+                                HapticFeedback.mediumImpact();
                                 Navigator.push(
                                   context,
                                   CupertinoPageRoute(
@@ -75,9 +77,11 @@ class CharacterScreen extends StatelessWidget {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(character.tibetan, style: const TextStyle(fontSize: 46)),
+                                  Text(character.tibetan,
+                                      style: const TextStyle(fontSize: 46)),
                                   const SizedBox(width: 80),
-                                  Text(character.english, style: const TextStyle(fontSize: 24)),
+                                  Text(character.english,
+                                      style: const TextStyle(fontSize: 24)),
                                 ],
                               ),
                             );

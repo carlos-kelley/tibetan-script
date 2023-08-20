@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:tibetan_script/models/character.dart';
+import 'package:flutter/services.dart';
 
 class CharacterDetailScreen extends StatefulWidget {
   const CharacterDetailScreen({super.key, required this.character});
@@ -16,6 +17,7 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
   void _toggleLanguage() {
     setState(() {
       _isTibetan = !_isTibetan;
+      HapticFeedback.mediumImpact();
     });
   }
 
