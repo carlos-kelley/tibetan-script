@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tibetan_script/models/character.dart';
+import 'package:tibetan_script/models/character/character.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 

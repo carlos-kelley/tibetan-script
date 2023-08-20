@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tibetan_script/models/vowel.dart';
+import 'package:tibetan_script/models/vowel/vowel.dart';
 import 'package:flutter/services.dart';
 
 class VowelDetailScreen extends StatefulWidget {

@@ -1,19 +1,19 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tibetan_script/models/vowel.dart';
-import 'package:tibetan_script/models/vowel_service.dart';
-import 'package:tibetan_script/vowel_detail_screen.dart';
+import 'package:tibetan_script/models/number/number.dart';
+import 'package:tibetan_script/models/number/number_service.dart';
+import 'package:tibetan_script/numbers/number_detail_screen.dart';
 import 'package:flutter/services.dart';
 
-class VowelScreen extends StatelessWidget {
-  const VowelScreen({Key? key}) : super(key: key);
+class NumberScreen extends StatelessWidget {
+  const NumberScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final futureVowels = VowelService.getVowels();
+    final futureNumbers = NumberService.getNumbers();
 
     return SafeArea(
-      child: FutureBuilder<List<Vowel>>(
-        future: futureVowels,
+      child: FutureBuilder<List<Number>>(
+        future: futureNumbers,
         builder: (context, snapshot) {
           // handle errors and loading
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -30,7 +30,7 @@ class VowelScreen extends StatelessWidget {
             );
           } else {
             // once we have data
-            final vowels = snapshot.data!;
+            final numbers = snapshot.data!;
 
             return Center(
               child: Column(
@@ -39,7 +39,7 @@ class VowelScreen extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsetsDirectional.only(bottom: 10),
                     child: Text(
-                      'Vowels',
+                      'Numbers',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
@@ -52,9 +52,9 @@ class VowelScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: vowels.length,
+                      itemCount: numbers.length,
                       itemBuilder: (context, index) {
-                        final vowel = vowels[index];
+                        final number = numbers[index];
                         return GestureDetector(
                           onTap: () {
                             HapticFeedback.mediumImpact();
@@ -62,7 +62,7 @@ class VowelScreen extends StatelessWidget {
                               context,
                               CupertinoPageRoute(
                                 builder: (context) =>
-                                    VowelDetailScreen(vowel: vowel),
+                                    NumberDetailScreen(number: number),
                               ),
                             );
                           },
@@ -70,10 +70,10 @@ class VowelScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(vowel.tibetan,
+                              Text(number.tibetan,
                                   style: const TextStyle(fontSize: 46)),
                               const SizedBox(width: 80),
-                              Text(vowel.ipa,
+                              Text(number.ipa,
                                   style: const TextStyle(fontSize: 24)),
                             ],
                           ),

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tibetan_script/character_screen.dart' as character_screen;
-import 'package:tibetan_script/vowel_screen.dart' as vowel_screen;
+import 'package:tibetan_script/characters/character_screen.dart'
+    as character_screen;
+import 'package:tibetan_script/vowels/vowel_screen.dart' as vowel_screen;
+import 'package:tibetan_script/numbers/number_screen.dart' as number_screen;
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +36,7 @@ class MainScreenState extends State<MainScreen> {
   static final List<Widget> _screens = <Widget>[
     const character_screen.CharacterScreen(),
     const vowel_screen.VowelScreen(),
+    const number_screen.NumberScreen(),
   ];
 
   @override
@@ -51,7 +54,7 @@ class MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.square),
-            label: 'Punctuation',
+            label: 'Numbers',
           ),
         ],
         currentIndex: _selectedIndex,

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tibetan_script/models/character.dart';
-import 'package:tibetan_script/models/character_service.dart';
-import 'package:tibetan_script/character_detail_screen.dart';
+import 'package:tibetan_script/models/character/character.dart';
+import 'package:tibetan_script/models/character/character_service.dart';
+import 'package:tibetan_script/characters/character_detail_screen.dart';
 import 'package:flutter/services.dart';
 
 class CharacterScreen extends StatelessWidget {
