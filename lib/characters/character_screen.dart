@@ -34,13 +34,13 @@ class CharacterScreen extends StatelessWidget {
               final characters = snapshot.data!;
               final groups =
                   groupBy(characters, (character) => character.place);
-
+      
               return ListView.builder(
                 itemCount: groups.length,
                 itemBuilder: (context, index) {
                   final place = groups.keys.elementAt(index);
                   final characters = groups[place]!;
-
+      
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [

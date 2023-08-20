@@ -32,56 +32,62 @@ class NumberScreen extends StatelessWidget {
             // once we have data
             final numbers = snapshot.data!;
 
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Padding(
-                    padding: EdgeInsetsDirectional.only(bottom: 10),
-                    child: Text(
-                      'Numbers',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 120,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: numbers.length,
-                      itemBuilder: (context, index) {
-                        final number = numbers[index];
-                        return GestureDetector(
-                          onTap: () {
-                            HapticFeedback.mediumImpact();
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                builder: (context) =>
-                                    NumberDetailScreen(number: number),
-                              ),
-                            );
-                          },
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(number.tibetan,
-                                  style: const TextStyle(fontSize: 46)),
-                              const SizedBox(width: 80),
-                              Text(number.ipa,
-                                  style: const TextStyle(fontSize: 24)),
-                            ],
+            return SafeArea(
+              child: CupertinoPageScaffold(
+                child: Center(
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: 130),
+                      const Padding(
+                        padding: EdgeInsetsDirectional.only(top: 40, bottom: 10),
+                        child: Text(
+                          'Numbers',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 120,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Wrap(
+                            alignment: WrapAlignment.center,
+                            spacing: 20,
+                            runSpacing: 20,
+                            children: numbers.map((number) {
+                              return GestureDetector(
+                                onTap: () {
+                                  HapticFeedback.mediumImpact();
+                                  Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) =>
+                                          NumberDetailScreen(number: number),
+                                    ),
+                                  );
+                                },
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(number.tibetan.toString(),
+                                        style: const TextStyle(fontSize: 40)),
+                                    const SizedBox(width: 50),
+                                    Text(number.ipa.toString(),
+                                        style: const TextStyle(fontSize: 20)),
+                                  ],
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             );
           }

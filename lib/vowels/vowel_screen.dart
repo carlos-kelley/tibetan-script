@@ -32,56 +32,60 @@ class VowelScreen extends StatelessWidget {
             // once we have data
             final vowels = snapshot.data!;
 
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Padding(
-                    padding: EdgeInsetsDirectional.only(bottom: 10),
-                    child: Text(
-                      'Vowels',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+            return SafeArea(
+              child: CupertinoPageScaffold(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsetsDirectional.only(bottom: 10),
+                        child: Text(
+                          'Vowels',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 120,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: vowels.length,
-                      itemBuilder: (context, index) {
-                        final vowel = vowels[index];
-                        return GestureDetector(
-                          onTap: () {
-                            HapticFeedback.mediumImpact();
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                builder: (context) =>
-                                    VowelDetailScreen(vowel: vowel),
+                      SizedBox(
+                        height: 120,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: vowels.length,
+                          itemBuilder: (context, index) {
+                            final vowel = vowels[index];
+                            return GestureDetector(
+                              onTap: () {
+                                HapticFeedback.mediumImpact();
+                                Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) =>
+                                        VowelDetailScreen(vowel: vowel),
+                                  ),
+                                );
+                              },
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(vowel.tibetan,
+                                      style: const TextStyle(fontSize: 46)),
+                                  const SizedBox(width: 80),
+                                  Text(vowel.ipa,
+                                      style: const TextStyle(fontSize: 24)),
+                                ],
                               ),
                             );
                           },
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(vowel.tibetan,
-                                  style: const TextStyle(fontSize: 46)),
-                              const SizedBox(width: 80),
-                              Text(vowel.ipa,
-                                  style: const TextStyle(fontSize: 24)),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             );
           }
