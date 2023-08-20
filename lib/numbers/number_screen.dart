@@ -50,39 +50,36 @@ class NumberScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 120,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Wrap(
-                            alignment: WrapAlignment.center,
-                            spacing: 20,
-                            runSpacing: 20,
-                            children: numbers.map((number) {
-                              return GestureDetector(
-                                onTap: () {
-                                  HapticFeedback.mediumImpact();
-                                  Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) =>
-                                          NumberDetailScreen(number: number),
-                                    ),
-                                  );
-                                },
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(number.tibetan.toString(),
-                                        style: const TextStyle(fontSize: 40)),
-                                    const SizedBox(width: 50),
-                                    Text(number.ipa.toString(),
-                                        style: const TextStyle(fontSize: 20)),
-                                  ],
-                                ),
-                              );
-                            }).toList(),
-                          ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Wrap(
+                          alignment: WrapAlignment.center,
+                          spacing: 20,
+                          runSpacing: 20,
+                          children: numbers.map((number) {
+                            return GestureDetector(
+                              onTap: () {
+                                HapticFeedback.mediumImpact();
+                                Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) =>
+                                        NumberDetailScreen(number: number),
+                                  ),
+                                );
+                              },
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(number.tibetan.toString(),
+                                      style: const TextStyle(fontSize: 40)),
+                                  const SizedBox(width: 50),
+                                  Text(number.ipa.toString(),
+                                      style: const TextStyle(fontSize: 20)),
+                                ],
+                              ),
+                            );
+                          }).toList(),
                         ),
                       ),
                     ],
