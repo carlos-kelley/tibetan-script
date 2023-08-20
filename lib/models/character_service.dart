@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'character.dart';
 
 class CharacterService {
-  static const String _baseUrl = 'http://localhost:8000/api';
+  static const String _baseUrl = 'http://172.25.140.86:8000/api';
 
   static Future<List<Character>> getCharacters() async {
     final response = await http.get(Uri.parse('$_baseUrl/characters'));

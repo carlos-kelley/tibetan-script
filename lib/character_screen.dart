@@ -57,16 +57,35 @@ class _CharacterScreenState extends State<CharacterScreen> {
   }
 }
 
-class CharacterDetailScreen extends StatelessWidget {
+class CharacterDetailScreen extends StatefulWidget {
+  const CharacterDetailScreen({super.key, required this.character});
+
   final Character character;
 
-  const CharacterDetailScreen({super.key, required this.character});
+  @override
+  State<CharacterDetailScreen> createState() => _CharacterDetailScreenState();
+}
+
+class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
+  bool _isTibetan = true;
+
+  void _toggleLanguage() {
+    setState(() {
+      _isTibetan = !_isTibetan;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       child: Center(
-        child: Text(character.tibetan),
+        child: GestureDetector(
+          onTap: _toggleLanguage,
+          child: Text(
+            _isTibetan ? widget.character.tibetan : widget.character.english,
+            style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
+          ),
+        ),
       ),
     );
   }
