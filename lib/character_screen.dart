@@ -45,7 +45,7 @@ class CharacterScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(16),
+                        padding: const EdgeInsetsDirectional.only (top: 40, bottom: 10),
                         child: Text(
                           place,
                           style: const TextStyle(
