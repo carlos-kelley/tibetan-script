@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CupertinoApp(
       title: 'Tibetan Script',
-      theme: CupertinoThemeData(primaryColor: CupertinoColors.systemBlue),
+      theme: CupertinoThemeData(primaryColor: Color.fromARGB(255, 255, 255, 255)),
       home: CharacterScreen(),
     );
   }
