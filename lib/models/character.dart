@@ -6,6 +6,7 @@ class Character {
   final String phonation;
 
   Character({
+    // required means that the parameter is mandatory when calling the constructor
     required this.id,
     required this.tibetan,
     required this.english,
@@ -13,6 +14,8 @@ class Character {
     required this.phonation,
   });
 
+  // This method is used to convert a json object to a Character object
+  // A factory constructor will construct an object from a JSON object
   factory Character.fromJson(Map<String, dynamic> json) {
     return Character(
       id: json['id'],

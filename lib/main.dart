@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CupertinoApp(
       title: 'Tibetan Script',
+      // used for the back button in the navigation bar
       theme: CupertinoThemeData(primaryColor: Color.fromARGB(255, 255, 255, 255)),
       home: CharacterScreen(),
     );

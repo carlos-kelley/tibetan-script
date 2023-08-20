@@ -26,6 +26,7 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: CupertinoPageScaffold(
+        // TODO: make text at top without navigation bar
         navigationBar: CupertinoNavigationBar(
           backgroundColor: Colors.transparent,
           middle: Text(widget.character.place,

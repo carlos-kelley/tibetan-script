@@ -13,6 +13,7 @@ class CharacterService {
 
     if (response.statusCode == 200) {
       final List<dynamic> data = jsonDecode(response.body)['data'];
+      // map each json object to a Character object
       return data.map((json) => Character.fromJson(json)).toList();
     } else {
       throw Exception('Failed to load characters');
