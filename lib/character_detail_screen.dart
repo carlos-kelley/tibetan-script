@@ -27,12 +27,26 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
       child: Center(
         child: GestureDetector(
           onTap: _toggleLanguage,
-          child: Text(
-            _isTibetan ? widget.character.tibetan : widget.character.english,
-            style: TextStyle(
-              fontSize: _isTibetan ? 140 : 80,
-              fontWeight: FontWeight.bold,
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                _isTibetan
+                    ? widget.character.tibetan
+                    : widget.character.english,
+                style: TextStyle(
+                  fontSize: _isTibetan ? 140 : 80,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                _isTibetan ? widget.character.phonation : '',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ],
           ),
         ),
       ),
