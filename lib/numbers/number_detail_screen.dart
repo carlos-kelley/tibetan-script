@@ -23,23 +23,30 @@ class _NumberDetailScreenState extends State<NumberDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: CupertinoPageScaffold(
-        child: Center(
-          child: GestureDetector(
-            onTap: _toggleLanguage,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  _isTibetan ? widget.number.tibetan : widget.number.ipa,
-                  style: TextStyle(
-                    fontSize: _isTibetan ? 140 : 80,
-                    fontWeight: FontWeight.bold,
-                  ),
+
+    // set status bar color
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: CupertinoColors.white,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
+
+    return CupertinoPageScaffold(
+      child: Center(
+        child: GestureDetector(
+          onTap: _toggleLanguage,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                _isTibetan ? widget.number.tibetan : widget.number.ipa,
+                style: TextStyle(
+                  fontSize: _isTibetan ? 140 : 80,
+                  fontWeight: FontWeight.bold,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
