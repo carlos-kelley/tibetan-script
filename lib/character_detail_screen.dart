@@ -27,7 +27,10 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
           onTap: _toggleLanguage,
           child: Text(
             _isTibetan ? widget.character.tibetan : widget.character.english,
-            style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
+            style: TextStyle(
+              fontSize: _isTibetan ? 140 : 80,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
