@@ -32,23 +32,21 @@ class _VowelDetailScreenState extends State<VowelDetailScreen> {
       ),
     );
 
-    return SafeArea(
-      child: CupertinoPageScaffold(
-        child: Center(
-          child: GestureDetector(
-            onTap: _toggleLanguage,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  _isTibetan ? widget.vowel.tibetan : widget.vowel.ipa,
-                  style: TextStyle(
-                    fontSize: _isTibetan ? 140 : 80,
-                    fontWeight: FontWeight.bold,
-                  ),
+    return CupertinoPageScaffold(
+      child: Center(
+        child: GestureDetector(
+          onTap: _toggleLanguage,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                _isTibetan ? widget.vowel.tibetan : widget.vowel.ipa,
+                style: TextStyle(
+                  fontSize: _isTibetan ? 140 : 80,
+                  fontWeight: FontWeight.bold,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
