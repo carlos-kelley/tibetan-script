@@ -9,11 +9,9 @@ class CharacterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final futureCharacters = CharacterService.getCharacters();
-
     return CupertinoPageScaffold(
       child: FutureBuilder<List<Character>>(
-        future: futureCharacters,
+        future: CharacterService.getCharacters(),
         builder: (context, snapshot) {
           // handle errors and loading
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -41,7 +39,6 @@ class CharacterScreen extends StatelessWidget {
                 final characters = groups[place]!;
     
                 return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
                       padding: const EdgeInsetsDirectional.only (top: 40, bottom: 10),
@@ -98,7 +95,6 @@ class CharacterScreen extends StatelessWidget {
   }
 }
 
-// TODO: understand
 Map<String, List<T>> groupBy<T>(List<T> list, String Function(T) keyGetter) {
   final map = <String, List<T>>{};
   for (final item in list) {

@@ -9,11 +9,10 @@ class VowelScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final futureVowels = VowelService.getVowels();
 
     return CupertinoPageScaffold(
       child: FutureBuilder<List<Vowel>>(
-        future: futureVowels,
+        future: VowelService.getVowels(),
         builder: (context, snapshot) {
           // handle errors and loading
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -36,22 +35,18 @@ class VowelScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Padding(
-                    padding: EdgeInsetsDirectional.only(bottom: 10),
-                    child: Text(
-                      'Vowels',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
+                  const Text(
+                    'Vowels',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: Wrap(
                       alignment: WrapAlignment.center,
-                      spacing: 20,
-                      runSpacing: 20,
+                      spacing: 40,
                       children: vowels.map((vowel) {
                         return GestureDetector(
                           onTap: () {
@@ -65,7 +60,6 @@ class VowelScreen extends StatelessWidget {
                             );
                           },
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(vowel.tibetan.toString(),
                                   style: const TextStyle(fontSize: 40)),
