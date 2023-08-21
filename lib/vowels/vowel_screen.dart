@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:tibetan_script/vowels/vowel_detail_screen.dart';
-import 'package:tibetan_script/models/vowel/vowel.dart';
-import 'package:tibetan_script/models/vowel/vowel_service.dart';
+import 'package:tibetan_script/models/vowel.dart';
+import 'package:tibetan_script/services/vowel_service.dart';
 import 'package:flutter/services.dart';
 
 class VowelScreen extends StatelessWidget {
@@ -11,14 +10,6 @@ class VowelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final futureVowels = VowelService.getVowels();
-
-    // set status bar color
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-    );
 
     return CupertinoPageScaffold(
       child: FutureBuilder<List<Vowel>>(

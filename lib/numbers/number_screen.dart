@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tibetan_script/models/number/number.dart';
-import 'package:tibetan_script/models/number/number_service.dart';
+import 'package:tibetan_script/models/number.dart';
+import 'package:tibetan_script/services/number_service.dart';
 import 'package:tibetan_script/numbers/number_detail_screen.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/material.dart';
 
 class NumberScreen extends StatelessWidget {
   const NumberScreen({Key? key}) : super(key: key);
@@ -12,13 +11,6 @@ class NumberScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final futureNumbers = NumberService.getNumbers();
 
-    // set status bar color
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-    );
 
     return CupertinoPageScaffold(
       child: SafeArea(

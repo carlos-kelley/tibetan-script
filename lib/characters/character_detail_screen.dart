@@ -1,20 +1,23 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tibetan_script/models/character/character.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/material.dart';
+import 'package:tibetan_script/models/character.dart';
 
 class CharacterDetailScreen extends StatefulWidget {
-  const CharacterDetailScreen({super.key, required this.character});
+  const CharacterDetailScreen({
+    Key? key,
+    required this.character,
+  }) : super(key: key);
 
   final Character character;
 
   @override
-  State<CharacterDetailScreen> createState() => _CharacterDetailScreenState();
+  CharacterDetailScreenState createState() => CharacterDetailScreenState();
 }
 
-class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
+class CharacterDetailScreenState extends State<CharacterDetailScreen> {
   bool _isTibetan = true;
 
+  // toggle language on tap
   void _toggleLanguage() {
     setState(() {
       _isTibetan = !_isTibetan;
@@ -24,15 +27,6 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-    // set status bar color
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-    );
-
     return CupertinoPageScaffold(
       child: Center(
         child: GestureDetector(
@@ -41,21 +35,21 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                _isTibetan
-                    ? widget.character.tibetan
-                    : widget.character.english,
+                _isTibetan ? widget.character.tibetan : widget.character.english,
                 style: TextStyle(
                   fontSize: _isTibetan ? 140 : 80,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
-                _isTibetan ? widget.character.phonation : '',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+              // show phonation only for Tibetan characters
+              if (_isTibetan)
+                Text(
+                  widget.character.phonation,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              )
             ],
           ),
         ),

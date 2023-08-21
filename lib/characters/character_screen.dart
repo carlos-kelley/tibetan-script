@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tibetan_script/models/character/character.dart';
-import 'package:tibetan_script/models/character/character_service.dart';
+import 'package:tibetan_script/models/character.dart';
+import 'package:tibetan_script/services/character_service.dart';
 import 'package:tibetan_script/characters/character_detail_screen.dart';
 import 'package:flutter/services.dart';
 
@@ -10,14 +10,6 @@ class CharacterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final futureCharacters = CharacterService.getCharacters();
-
-    // set status bar color
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: CupertinoColors.white,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-    );
 
     return CupertinoPageScaffold(
       child: FutureBuilder<List<Character>>(

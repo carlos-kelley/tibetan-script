@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tibetan_script/models/number/number.dart';
 import 'package:flutter/services.dart';
+import 'package:tibetan_script/models/number.dart';
 
 class NumberDetailScreen extends StatefulWidget {
-  const NumberDetailScreen({super.key, required this.number});
-
+  const NumberDetailScreen({Key? key, required this.number}) : super(key: key);
   final Number number;
 
   @override
@@ -23,30 +22,16 @@ class _NumberDetailScreenState extends State<NumberDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-    // set status bar color
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: CupertinoColors.white,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-    );
-
     return CupertinoPageScaffold(
       child: Center(
         child: GestureDetector(
           onTap: _toggleLanguage,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                _isTibetan ? widget.number.tibetan : widget.number.ipa,
-                style: TextStyle(
-                  fontSize: _isTibetan ? 140 : 80,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+          child: Text(
+            _isTibetan ? widget.number.tibetan : widget.number.ipa,
+            style: TextStyle(
+              fontSize: _isTibetan ? 140 : 70,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
