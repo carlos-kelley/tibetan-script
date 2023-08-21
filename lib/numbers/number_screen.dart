@@ -64,7 +64,7 @@ class NumberScreen extends StatelessWidget {
                               Text(number.tibetan.toString(),
                                   style: const TextStyle(fontSize: 60)),
                               const SizedBox(width: 50),
-                              Text(number.ipa.toString(),
+                              Text(number.arabic.toString(),
                                   style: const TextStyle(fontSize: 20)),
                             ],
                           ),

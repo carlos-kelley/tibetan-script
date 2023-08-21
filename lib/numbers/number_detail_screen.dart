@@ -26,12 +26,26 @@ class _NumberDetailScreenState extends State<NumberDetailScreen> {
       child: Center(
         child: GestureDetector(
           onTap: _toggleLanguage,
-          child: Text(
-            _isTibetan ? widget.number.tibetan : widget.number.ipa,
-            style: TextStyle(
-              fontSize: _isTibetan ? 140 : 70,
-              fontWeight: FontWeight.bold,
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                _isTibetan ? widget.number.tibetan : widget.number.ipa,
+                style: TextStyle(
+                  fontSize: _isTibetan ? 140 : 70,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 20,),
+              if (!_isTibetan)
+                Text(
+                  widget.number.arabic,
+                  style: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+            ],
           ),
         ),
       ),
